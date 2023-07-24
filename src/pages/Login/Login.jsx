@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
   const {
@@ -90,6 +91,8 @@ const Login = () => {
           <Link to="/register">Please Register</Link>
         </span>
       </p>
+      <div className="divider">OR Login With</div>
+      <SocialLogin></SocialLogin>
     </div>
   );
 };

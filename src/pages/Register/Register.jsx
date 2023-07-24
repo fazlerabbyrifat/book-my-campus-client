@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from './../../hooks/useAuth';
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin";
 
 const Register = () => {
   const {
@@ -173,6 +174,8 @@ const Register = () => {
           <Link to="/login">Please Login</Link>
         </span>
       </p>
+      <div className="divider">OR Register With</div>
+      <SocialLogin></SocialLogin>
     </div>
   );
 };
