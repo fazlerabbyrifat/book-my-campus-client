@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
-    const { googleSignIn } = useAuth();
+  const { googleSignIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const SocialLogin = () => {
           name: loggedUser.displayName,
           email: loggedUser.email,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://book-my-campus-server-dun.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

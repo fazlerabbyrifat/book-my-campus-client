@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from './../../hooks/useAuth';
+import useAuth from "./../../hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../../components/SocialLogin";
 
@@ -22,8 +22,13 @@ const Register = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         updateUserProfile(data.name, data.photoURL, data.number).then(() => {
-          const savedUser = { name: data.name, email: data.email, image: data.photoURL, phone: data.number };
-          fetch("http://localhost:5000/users", {
+          const savedUser = {
+            name: data.name,
+            email: data.email,
+            image: data.photoURL,
+            phone: data.number,
+          };
+          fetch("https://book-my-campus-server-dun.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
