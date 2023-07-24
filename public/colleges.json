@@ -1,0 +1,128 @@
+[
+    {
+        "name": "Dhaka University",
+        "image": "https://i.ibb.co/ysVX316/DU.jpg",
+        "admissionProcess": "Admissions are open from June to August. Applicants must submit their academic records and pass an entrance examination.",
+        "admissionDates": "2023-08-01 to 2023-08-31",
+        "events": [
+          {
+            "title": "Orientation Day",
+            "date": "2023-09-15",
+            "description": "An event to welcome new students and introduce them to campus life."
+          },
+          {
+            "title": "Career Fair",
+            "date": "2023-10-20",
+            "description": "A job fair to connect students with potential employers."
+          }
+        ],
+        "researchWorks": [
+          {
+            "title": "Advancements in Renewable Energy",
+            "faculty": "Prof. John Doe",
+            "description": "A research paper exploring the latest innovations in renewable energy technologies."
+          },
+          {
+            "title": "Artificial Intelligence and Healthcare",
+            "faculty": "Dr. Jane Smith",
+            "description": "A study on the applications of AI in the healthcare industry."
+          }
+        ],
+        "sports": [
+          {
+            "sport": "Football",
+            "coach": "Coach Alex Johnson",
+            "schedule": "Practice on Mondays and Wednesdays at 4 PM."
+          },
+          {
+            "sport": "Basketball",
+            "coach": "Coach Sarah Lee",
+            "schedule": "Practice on Tuesdays and Thursdays at 5 PM."
+          }
+        ]
+      },
+      {
+        "name": "Bangladesh University of Engineering and Technology",
+        "image": "https://i.ibb.co/6XVQMx4/buet.jpg",
+        "admissionProcess": "Admissions are based on the national entrance exam for engineering colleges.",
+        "admissionDates": "2023-07-15 to 2023-08-15",
+        "events": [
+          {
+            "title": "Tech Fest",
+            "date": "2023-11-10",
+            "description": "A technical festival showcasing student projects and innovations."
+          },
+          {
+            "title": "Coding Competition",
+            "date": "2023-12-05",
+            "description": "A coding competition for students to demonstrate their programming skills."
+          }
+        ],
+        "researchWorks": [
+          {
+            "title": "Internet of Things in Smart Cities",
+            "faculty": "Prof. Michael Brown",
+            "description": "A research study exploring IoT applications in urban environments."
+          },
+          {
+            "title": "Cybersecurity Challenges in the Digital Age",
+            "faculty": "Dr. Emily White",
+            "description": "A paper analyzing the evolving cybersecurity threats and solutions."
+          }
+        ],
+        "sports": [
+          {
+            "sport": "Cricket",
+            "coach": "Coach Robert Johnson",
+            "schedule": "Practice on Wednesdays and Fridays at 3 PM."
+          },
+          {
+            "sport": "Table Tennis",
+            "coach": "Coach Jessica Lee",
+            "schedule": "Practice on Tuesdays and Thursdays at 6 PM."
+          }
+        ]
+      },
+      {
+        "name": "Jahangirnagar University",
+        "image": "https://i.ibb.co/88KnVgj/JU.jpg",
+        "admissionProcess": "Applicants must submit their portfolio and attend an interview with the admissions committee.",
+        "admissionDates": "2023-08-10 to 2023-09-10",
+        "events": [
+          {
+            "title": "Annual Art Exhibition",
+            "date": "2023-07-30",
+            "description": "An exhibition showcasing artworks of students and faculty."
+          },
+          {
+            "title": "Creative Writing Workshop",
+            "date": "2023-08-15",
+            "description": "A workshop to enhance students' creative writing skills."
+          }
+        ],
+        "researchWorks": [
+          {
+            "title": "Exploring Art Therapy",
+            "faculty": "Prof. Laura Adams",
+            "description": "A research study on the therapeutic benefits of art."
+          },
+          {
+            "title": "The Role of Art in Social Change",
+            "faculty": "Dr. Mark Roberts",
+            "description": "A paper discussing how art can influence societal change."
+          }
+        ],
+        "sports": [
+          {
+            "sport": "Swimming",
+            "coach": "Coach Rebecca Miller",
+            "schedule": "Practice on Mondays and Thursdays at 6 AM."
+          },
+          {
+            "sport": "Dance",
+            "coach": "Coach David Anderson",
+            "schedule": "Practice on Tuesdays and Fridays at 4 PM."
+          }
+        ]
+      }      
+]

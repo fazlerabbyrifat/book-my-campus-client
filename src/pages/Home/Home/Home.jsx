@@ -1,9 +1,12 @@
+import Colleges from "../Colleges/Colleges";
+import SearchField from "../SearchField/SearchField";
 
 
 const Home = () => {
     return (
         <div>
-            <h1>This is home</h1>
+            <SearchField></SearchField>
+            <Colleges></Colleges>
         </div>
     );
 };
