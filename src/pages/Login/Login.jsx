@@ -1,22 +1,42 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
-    
-      const onSubmit =  (data) => {
-        console.log(data);
-      };
-    return (
-        <div className="bg-gray-500 py-10">
-      <h3 className="text-5xl font-semibold text-center mb-10">
-        Please Login
-      </h3>
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { signIn } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = (data) => {
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login Successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  };
+  return (
+    <div className="bg-gray-500 py-10">
+      <h3 className="text-5xl font-semibold text-center mb-10">Please Login</h3>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-1/2 mx-auto bg-gray-800 p-20 rounded-lg"
@@ -71,7 +91,7 @@ const Login = () => {
         </span>
       </p>
     </div>
-    );
+  );
 };
 
 export default Login;
