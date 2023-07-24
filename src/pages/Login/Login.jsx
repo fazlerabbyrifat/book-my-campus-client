@@ -13,7 +13,7 @@ const Login = () => {
         console.log(data);
       };
     return (
-        <div className="bg-gray-500 py-10 my-10">
+        <div className="bg-gray-500 py-10">
       <h3 className="text-5xl font-semibold text-center mb-10">
         Please Login
       </h3>
