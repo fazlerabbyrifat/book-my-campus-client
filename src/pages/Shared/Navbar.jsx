@@ -1,21 +1,36 @@
 import { Link } from "react-router-dom";
-import logo from '../../assets/logo.jpg'
+import logo from "../../assets/logo.jpg";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-    const navItems = <>
-    <li>
-        <Link to='/'>Home</Link>
-    </li>
-    <li>
-        <Link to='/'>Colleges</Link>
-    </li>
-    <li>
-        <Link to='/'>Admission</Link>
-    </li>
-    <li>
-        <Link to='/'>My Colleges</Link>
-    </li>
+  const { user, logOut } = useAuth();
+  const navItems = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/">Colleges</Link>
+      </li>
+      <li>
+        <Link to="/">Admission</Link>
+      </li>
+      <li>
+        <Link to="/">My Colleges</Link>
+      </li>
+      {
+        user && <li>
+          <Link>{user?.displayName}</Link>
+        </li>
+      }
     </>
+  );
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="navbar bg-gray-800 p-5">
@@ -45,17 +60,21 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-2">
-            <img className="w-10" src={logo} alt="" />
-            <span className="text-xl md:text-2xl lg:text-3xl font-bold uppercase text-primary"><Link to="/">Book My Campus</Link></span>
+          <img className="w-10" src={logo} alt="" />
+          <span className="text-xl md:text-2xl lg:text-3xl font-bold uppercase text-primary">
+            <Link to="/">Book My Campus</Link>
+          </span>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-primary">Login</button>
+        {user ? (
+          <button onClick={handleLogout} className="btn btn-primary">Logout</button>
+        ) : (
+          <button className="btn btn-primary">Login</button>
+        )}
       </div>
     </div>
   );
