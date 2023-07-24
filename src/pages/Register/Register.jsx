@@ -1,15 +1,53 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from './../../hooks/useAuth';
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
+  const { createUser, updateUserProfile } = useAuth();
+
   const onSubmit = (data) => {
-    console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(data.name, data.photoURL, data.number).then(() => {
+          const savedUser = { name: data.name, email: data.email, image: data.photoURL, phone: data.number };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Successfully user account created",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
+        });
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
   };
 
   return (
@@ -31,7 +69,7 @@ const Register = () => {
           <input
             type="text"
             id="fullName"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 text-black py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             {...register("name", { required: true })}
           />
           {errors.name && (
@@ -41,7 +79,7 @@ const Register = () => {
 
         <div className="mb-4">
           <label
-            htmlFor="fullName"
+            htmlFor="photoURL"
             className="block mb-2 font-medium text-white"
           >
             Photo URL
@@ -49,7 +87,7 @@ const Register = () => {
           <input
             type="text"
             id="photoURL"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             {...register("photoURL", { required: true })}
           />
           {errors.photoURL && (
@@ -67,7 +105,7 @@ const Register = () => {
           <input
             type="tel"
             id="phoneNumber"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             {...register("number", {
               required: "Phone number is required",
               pattern: {
@@ -88,7 +126,7 @@ const Register = () => {
           <input
             type="email"
             id="email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             {...register("email", { required: true })}
           />
           {errors.email && (
@@ -106,7 +144,7 @@ const Register = () => {
           <input
             type="password"
             id="password"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             {...register("password", {
               required: "Password is required",
               pattern: {
