@@ -1,21 +1,19 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-
 const Register = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
-    
-      const onSubmit = (data) => {
-        console.log(data);
-        
-      };
-      
-    return (
-        <div className="bg-gray-500 py-5">
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <div className="bg-gray-500 py-5">
       <h3 className="text-5xl font-semibold text-center mb-10">
         Please Register
       </h3>
@@ -38,6 +36,24 @@ const Register = () => {
           />
           {errors.name && (
             <span className="text-red-500">{errors.name.message}</span>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="fullName"
+            className="block mb-2 font-medium text-white"
+          >
+            Photo URL
+          </label>
+          <input
+            type="text"
+            id="photoURL"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            {...register("photoURL", { required: true })}
+          />
+          {errors.photoURL && (
+            <span className="text-red-500">{errors.photoURL.message}</span>
           )}
         </div>
 
@@ -120,7 +136,7 @@ const Register = () => {
         </span>
       </p>
     </div>
-    );
+  );
 };
 
 export default Register;
